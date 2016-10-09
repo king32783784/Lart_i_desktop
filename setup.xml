@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<config>
+    <summary>Lart_i Test Setting File</summary>
+    <basic>
+        <arch>x86_64</arch>
+        <date>2016-02-17</date>
+        <osver>4.0</osver>
+    </basic>
+    <common>
+        <configlist>clientip</configlist>
+            <clientip>192.168.32.46</clientip>
+            <!--clientip:The test machine's ip-->
+        <configlist>isourl</configlist>
+            <isourl>http://koji.isoft.zhcn.cc/iso/isoft4.0/</isourl>
+            <!--isourl:"Specifies the network path ISO store,forexample"http://xxx.xxx.xxx.xxx/xxx" -->
+        <configlist>clienttestxml</configlist>
+            <clienttestxml>http://192.168.32.18/testxml/</clienttestxml>
+            <!--Specify the address of the testxml store -->
+        <configlist>checkfrequency</configlist>
+            <checkfrequency>120</checkfrequency>
+            <!--Y:year; m:month; d:day; H:hour; M:minute-->
+            <!--checkfrequency:"Specify the frequency for query ISO change" -->
+        <configlist>testtooldir</configlist>
+            <testtooldir>/opt</testtooldir>
+            <!--Specifies the directory for storing the testtool-->
+        <configlist>isoserver</configlist>
+            <isoserver>/var/www/html/testiso/</isoserver>
+    </common>
+    <result>
+        <configlist>resultdir</configlist>
+            <resultdir>default</resultdir>
+            <!--resultdir:"Specifies the directory for storing the results.default:$testtooldir/Isoft-desktop-autotest/Results-Processing/Source_data/"-->
+        <configlist>comparingos</configlist>
+            <comparingos>default</comparingos>
+            <!--comparingos:Performance testing of the target system.default:The last test os-->
+        <configlist>maillist</configlist>
+            <maillist>peng.li@i-soft.com.cn</maillist>
+            <!--maillist:Specifies the send test results mailing list,forexample:**@i-soft.com.cn **@gmail.com-->
+    </result>
+    <data/>
+</config>
