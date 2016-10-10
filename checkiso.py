@@ -43,7 +43,9 @@ class CheckUpdate(object):
         testiso = isolist[-1][0]
         testlink = linklist[-1]
         testitem = testiso + "&&&&" + testlink
-        f = open('testisolist', 'a+')
+        isolistfile = os.path.join(setupinfo['xml_dict']['testtooldir'][0],
+                                   "testisolist")
+        f = open(isolistfile, 'a+')
         Type="Y"
         for line in f.xreadlines():
             if line.strip('\n') == testiso:
@@ -51,28 +53,6 @@ class CheckUpdate(object):
                 break
         if Type == "Y":
             f.write('%s\n' % testitem)
-
-    def getisomd5(self, testiso):
-        xmlurl = os.path.join(self.setup['xml_dict']['isourl'][0],
-                              testiso) + '.md5sum'
-        remode = "(.+)"
-        lartlogger.info(xmlurl)
-        targetmd5 = self.get_htmlcontent(xmlurl, remode)
-        return targetmd5[0]
-
-    def downloadiso(self, testiso):
-        locatedir = os.path.join(self.setup['xml_dict']['isoserver'][0],
-                                 testiso)
-        isourl = os.path.join(self.setup['xml_dict']['isourl'][0],
-                              testiso)
-        downloadfile(locatedir, isourl)
-        filemdsum = Popen('md5sum %s' % locatedir, stdout=PIPE, shell=True)
-        filemd5=filemdsum.communicate()[0]
-        md5standard = self.getisomd5(testiso)
-        if filemd5[0:32] == md5standard[0:32]:
-            return "yes"
-        else:
-            return "no"
 
 test = CheckUpdate()
 test.getisolist('/home/desktop-iso/setup.xml')

@@ -167,3 +167,4 @@ sudo umount ${rootdir}/tmp
 sudo umount $rootdir
  
 sudo rm -rf /tmp/inst
+

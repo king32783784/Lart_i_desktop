@@ -25,6 +25,8 @@
             <!--Specifies the directory for storing the testtool-->
         <configlist>isoserver</configlist>
             <isoserver>/var/www/html/testiso/</isoserver>
+        <configlist>testpart</configlist>
+            <testpart>/dev/sda2</testpart>
     </common>
     <result>
         <configlist>resultdir</configlist>

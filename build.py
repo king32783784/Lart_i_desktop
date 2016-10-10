@@ -1,3 +1,4 @@
+import shutil
 from subprocess import call, PIPE, Popen
 
 dependlist = ('pexpect',)
@@ -13,4 +14,5 @@ def install_package():
 
         except OSError as e:
             print >>sys.stderr, "Execution failed:", e
+
 install_package()
