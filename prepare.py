@@ -5,7 +5,7 @@ import linecache
 import time
 import logging
 
-lartlogger = logging.getLogger('Lart_i_desktop')
+lartlogger = logging.getLogger('desktoplogger')
 
 
 class ParsingXml(object):

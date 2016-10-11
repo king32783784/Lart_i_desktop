@@ -5,7 +5,7 @@ import logging
 from subprocess import Popen, PIPE
 from prepare import getsetupinfo
 
-lartlogger = logging.getLogger('Lart_i_desktop')
+lartlogger = logging.getLogger('desktoplogger')
 
 def downloadfile(local_dir, url):
     try:
@@ -39,7 +39,7 @@ class CheckUpdate(object):
             isoname = self.get_htmlcontent(link, remode)
             isolist.append(isoname)
             linklist.append(link)
-        print linklist
+#        print linklist
         testiso = isolist[-1][0]
         testlink = linklist[-1]
         testitem = testiso + "&&&&" + testlink
@@ -48,11 +48,11 @@ class CheckUpdate(object):
         f = open(isolistfile, 'a+')
         Type="Y"
         for line in f.xreadlines():
-            if line.strip('\n') == testiso:
+            if line.strip('\n') == testitem:
                 Type="N"
                 break
         if Type == "Y":
             f.write('%s\n' % testitem)
 
-test = CheckUpdate()
-test.getisolist('/home/desktop-iso/setup.xml')
+#test = CheckUpdate()
+#test.getisolist('/home/desktop-iso/setup.xml')

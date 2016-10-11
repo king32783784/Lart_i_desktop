@@ -9,8 +9,8 @@ from control import *
 from logging_config import *
 from subprocess import check_output
 
-Logging_Config.setlogger('Lart_i_desktop', 'Lart_i_desktop.log')
-lartlogger = logging.getLogger('Lart_i_desktop')
+Logging_Config.setlogger('desktoplogger', 'Lart_i_desktop.log')
+lartlogger = logging.getLogger('desktoplogger')
 
 def getxmlpath():
     homedir = check_output("pwd").strip('\n')

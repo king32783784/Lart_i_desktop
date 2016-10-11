@@ -6,7 +6,7 @@ import logging
 from subprocess import PIPE, Popen
 from prepare import getsetupinfo
 
-lartlogger = logging.getLogger('Lart_i_desktop')
+lartlogger = logging.getLogger('desktoplogger')
 
 def downloadfile(local_dir, url):
     try:
@@ -17,10 +17,7 @@ def downloadfile(local_dir, url):
         exit(1)
 
 
-class PrepareIso(object):
-    def __init__(self, setupxml, installtool):
-        self.xml = setupxml
-        self.tool = installtool
+class DoTest(object):
      
     def parsingisolist(self, setupinfo):
         isolist = os.path.join(setupinfo['xml_dict']['testtooldir'][0], 
@@ -47,8 +44,8 @@ class PrepareIso(object):
         else:
             return "unready"
     
-    def isoinstall(self):
-        setupinfo = getsetupinfo(self.xml)
+    def isoinstall(self, xml, installtool):
+        setupinfo = getsetupinfo(xml)
         print setupinfo
         isoitem = self.parsingisolist(setupinfo)
         isostatus = self.downloadiso(isoitem, setupinfo)
@@ -56,7 +53,7 @@ class PrepareIso(object):
                                isoitem[0])
         installpart = setupinfo['xml_dict']['testpart'][0]
         if isostatus == "ready":
-            installcmd = "sh " + self.tool + " " + installpart + " " + testiso
+            installcmd = "sh " + installtool + " " + installpart + " " + testiso
             install = Popen(installcmd, stdout=PIPE, shell=True)
             installstatus = install.communicate()[0]
             lartlogger.info(installstatus)
@@ -65,5 +62,5 @@ class PrepareIso(object):
             exit(1)
         
         
-a=PrepareIso('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
-b=a.isoinstall()   
+#a=PrepareIso('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
+#b=a.isoinstall()   

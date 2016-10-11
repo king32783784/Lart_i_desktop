@@ -47,7 +47,7 @@ sudo mkdir -p $rootdir
 sudo mkdir -p /tmp/inst/iso
 sudo mkdir -p /tmp/inst/fs
 sudo mkdir -p /tmp/inst/rt
-sudo mount $isoftiso /tmp/inst/iso
+sudo mount  -o loop $isoftiso /tmp/inst/iso
 sudo mount /tmp/inst/iso/isoft/x86_64/root-image.fs.sfs /tmp/inst/fs
 #
 sudo mount /tmp/inst/fs/root-image.fs /tmp/inst/rt
