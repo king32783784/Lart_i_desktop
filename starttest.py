@@ -3,7 +3,7 @@ import re
 import urllib
 import urllib2
 import logging
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, call
 from prepare import getsetupinfo
 
 lartlogger = logging.getLogger('desktoplogger')
@@ -43,6 +43,12 @@ class DoTest(object):
             return "ready"
         else:
             return "unready"
+ 
+    def setautostarttest(self):
+        shutil.copyfile('/home/test_iso.sh', '/tmp/inst/rootdir/etc/')
+        f = open('/tmp/inst/rootdir/etc/profile', 'a+')
+        f.write('/bin/sh /etc/test_iso.sh &')
+        call('reboot', shell=True)
     
     def isoinstall(self, xml, installtool):
         setupinfo = getsetupinfo(xml)
@@ -60,6 +66,7 @@ class DoTest(object):
         else:
             lartlogger.error("Test iso check failed")
             exit(1)
+       self.setautostarttest()
         
         
 #a=PrepareIso('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
