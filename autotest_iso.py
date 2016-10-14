@@ -12,15 +12,15 @@ from subprocess import check_output
 Logging_Config.setlogger('desktoplogger', 'Lart_i_desktop.log')
 lartlogger = logging.getLogger('desktoplogger')
 
-def getxmlpath():
+def gethomepath(testfile):
     homedir = check_output("pwd").strip('\n')
-    xmlpath = os.path.join(homedir, 'setup.xml')
-    print xmlpath
+    xmlpath = os.path.join(homedir, testfile)
     return xmlpath
 
 if __name__ == "__main__":
-    setupxml = getxmlpath()
-    lartdesktop = Main(setupxml)
+    setupxml = gethomepath('setup.xml')
+    testtool = gethomepath('autoinstall.sh')
+    lartdesktop = Main(setupxml, testtool)
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             lartlogger.info('lart_i desktop start')

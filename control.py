@@ -38,20 +38,26 @@ class TestControl(multiprocessing.Process, DoTest):
 
 class Main(Daemon):
     
-    def __init__(self, setupxml):
+    def __init__(self, setupxml, testtool):
         Daemon.__init__(self)
         self.setupxml = setupxml
+        self.tool = testtool
  
     
     def _run(self):
-       controlist = []
-       control = IsoCheck(self.setupxml)
-       controlist.append(control)
-       control.start()
-       lartlogger.info(control.pid)
-       file('/tmp/daemon.pid', 'a+').write("%s\n" % control.pid)
-       for control in controlist:
-           control.join()
+        threadlist = []
+        isocheck = IsoCheck(self.setupxml)
+        threadlist.append(isocheck)
+        isocheck.start()
+        lartlogger.info(isocheck.pid)
+        file('/tmp/daemon.pid', 'a+').write("%s\n" % isocheck.pid)
+        testcontrol = TestControl(self.setupxml, self.tool)
+        threadlist.append(testcontrol)
+        testcontrol.start()
+        lartlogger.info(testcontrol.pid)
+        fiel('/tmp/daemon.pid', 'a+').write("%s\n" % testcontrol.pid)
+        for control in controlist:
+            control.join()
 
 a = TestControl('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
 a.run()
