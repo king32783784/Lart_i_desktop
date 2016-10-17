@@ -69,7 +69,7 @@ fi
 ## *** dd
 echo 'dd operation...'
 echo 'dd operation...' >> /tmp/dins.log
-dd if=/tmp/inst/fs/root-image.fs of=$part
+dd if=/tmp/inst/fs/root-image.fs of=$part bs=4k
 sync
 e2fsck -f -y $part
 resize2fs -f $part

@@ -55,8 +55,8 @@ class Main(Daemon):
         threadlist.append(testcontrol)
         testcontrol.start()
         lartlogger.info(testcontrol.pid)
-        fiel('/tmp/daemon.pid', 'a+').write("%s\n" % testcontrol.pid)
-        for control in controlist:
+        file('/tmp/daemon.pid', 'a+').write("%s\n" % testcontrol.pid)
+        for control in threadlist:
             control.join()
 
 a = TestControl('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
