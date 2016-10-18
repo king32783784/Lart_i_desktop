@@ -1,8 +1,7 @@
 #!/bin/sh
-sleep 30
-mount /dev/sda1 /mnt    
-rm -rf /boot/grub
-cp -rf /mnt/boot/grub /boot/grub
-echo "iso install ok" >> /mnt/home/testiso.log
-sleep 30
+sleep 60
+sudo mount /dev/sda1 /mnt    
+sudo rm -rf /boot/grub
+sudo cp -rf /mnt/boot/grub /boot/grub
+sleep 60
 reboot

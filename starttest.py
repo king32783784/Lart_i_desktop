@@ -45,14 +45,13 @@ class DoTest(object):
             return "unready"
  
     def setautostarttest(self):
-        shutil.copyfile('/home/test_iso.sh', '/tmp/inst/rootdir/etc/')
+        shutil.copyfile('/home/test/Lart_i_desktop/test_iso.sh', '/tmp/inst/rootdir/home/test/test_iso.sh')
         f = open('/tmp/inst/rootdir/etc/profile', 'a+')
-        f.write('/bin/sh /etc/test_iso.sh &')
+        f.write('/bin/sh /home/test/test_iso.sh &')
         call('reboot', shell=True)
     
     def isoinstall(self, xml, installtool):
         setupinfo = getsetupinfo(xml)
-        print setupinfo
         isoitem = self.parsingisolist(setupinfo)
         isostatus = self.downloadiso(isoitem, setupinfo)
         testiso = os.path.join(setupinfo['xml_dict']['testtooldir'][0],
@@ -66,7 +65,7 @@ class DoTest(object):
         else:
             lartlogger.error("Test iso check failed")
             exit(1)
-       self.setautostarttest()
+        self.setautostarttest()
         
         
 #a=PrepareIso('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
