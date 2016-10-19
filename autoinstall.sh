@@ -156,15 +156,15 @@ sudo cp -f ${rootdir}/postscript.sh /tmp
 sudo rm -f /tmp/postscript.log
 sudo sh -c "chroot $rootdir /postscript.sh &> /tmp/postscript.log"
  
-sudo umount ${rootdir}/cur
+#sudo umount ${rootdir}/cur
 #sudo rm -rf ${rootdir}/cur
-sudo umount ${rootdir}/proc
-sudo umount ${rootdir}/sys/fs/fuse/connections
-sudo umount ${rootdir}/sys
-sudo umount ${rootdir}/dev
-sudo umount ${rootdir}/run
-sudo umount ${rootdir}/tmp
-sudo umount $rootdir
+#sudo umount ${rootdir}/proc
+#sudo umount ${rootdir}/sys/fs/fuse/connections
+#sudo umount ${rootdir}/sys
+#sudo umount ${rootdir}/dev
+#sudo umount ${rootdir}/run
+#sudo umount ${rootdir}/tmp
+#sudo umount $rootdir
  
-sudo rm -rf /tmp/inst
+#sudo rm -rf /tmp/inst
 

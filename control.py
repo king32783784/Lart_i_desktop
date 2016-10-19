@@ -59,5 +59,5 @@ class Main(Daemon):
         for control in threadlist:
             control.join()
 
-a = TestControl('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
-a.run()
+#a = TestControl('/home/Lart_i_desktop/setup.xml', '/home/Lart_i_desktop/autoinstall.sh')
+#a.run()

@@ -3,6 +3,7 @@ import re
 import urllib
 import urllib2
 import logging
+import shutil
 from subprocess import PIPE, Popen, call
 from prepare import getsetupinfo
 
